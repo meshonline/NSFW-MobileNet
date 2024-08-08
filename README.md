@@ -1,6 +1,7 @@
 # NSFW-MobileNet
 ### Introduction
 You can train your own NSFW model with the 'torchvision.models.mobilenet_v3_small' pretrained model in DDP mode.
+BTW. You can use the pre-trained model for free, including any commercial purposes.
 ### How To Train
 1. Create the './checkpoint' subdirectory and the './data/train' subdirectory manually.
 2. Copy your own NSFW dataset to the './data/train' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', but they can be any other subdirectories.
@@ -20,7 +21,7 @@ transform = transforms.Compose([
                     transforms.ToTensor(),
                     normalize,])
 
-img_rgb = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+img_rgb = Image.open('./image.jpg', mode='r').convert('RGB')
 img_rgb = transform(img_rgb).unsqueeze(0)
 # classes=['drawing', 'hentai', 'neutral', 'porn', 'sexy']
 img_rgb_list = []
