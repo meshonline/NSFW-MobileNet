@@ -8,7 +8,7 @@ You can train your own NSFW model with the 'torchvision.models.mobilenet_v3_smal
 ### Dataset
 I had trained the model with the dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
 ### How To Inference
-Since the input of the mobilenet_v3_small model is 224x224, and the image is not square, I suggest that you resize the image first, let the smaller edge of the image match 224, then crop the resized image to three 224x224 patches, inference the patches separately, if any of the inference result is NSFW, the final inference result should be NSFW, like this:
+Since the input size of the mobilenet_v3_small model is 224x224, but the image to inference is usually not square, I suggest that you resize the image first, let the smaller edge of the image match 224, then crop the resized image to two or three 224x224 patches, inference the patches separately, if any of the inference result is NSFW, the final inference result should be NSFW, for example:
 ```python
 model = torch.load('./model_full.pth')
 model = model.to(torch.device("cpu"))
