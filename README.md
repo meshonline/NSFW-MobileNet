@@ -3,7 +3,7 @@
 You can train your own NSFW model with the 'torchvision.models.mobilenet_v3_small' pretrained model in DDP mode.
 ### How To Train
 1. Create the './checkpoint' subdirectory and the './data/train' subdirectory manually.
-2. Copy your own NSFW dataset to the 'data/train' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', or any other subdirectories.
+2. Copy your own NSFW dataset to the './data/train' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', but they can be any other subdirectories.
 3. Run 'python3 train.py'.
 ### Dataset
 I had trained the model with the dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
