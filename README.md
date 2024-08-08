@@ -3,11 +3,10 @@
 You can train your own NSFW model with the 'torchvision.models.mobilenet_v3_small' pretrained model in DDP mode.
 ### How To Train
 1. Create the 'checkpoint' subdirectory and the 'data' subdirectory manually.
-2. Copy your own NSFW dataset to the 'data' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', or any other subdirectories.
-I had trained the model with this dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
+2. Copy your own NSFW dataset to the 'data' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', or any other subdirectories, I had trained the model with this dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
 3. Run 'python3 train.py'.
 ### How To Inference
-Since the input of the mobilenet_v3_small model is 224x224, and the image is not squared, I suggest that you resize the image first, let the smaller edge of the image match 224, then crop the resized image to three 224x224 patches, inference the patches separately, if any of the inference result is NSFW, the final inference result should be NSFW, like this:
+Since the input of the mobilenet_v3_small model is 224x224, and the image is not square, I suggest that you resize the image first, let the smaller edge of the image match 224, then crop the resized image to three 224x224 patches, inference the patches separately, if any of the inference result is NSFW, the final inference result should be NSFW, like this:
 ```python
 model = torch.load('./model_full.pth')
 model = model.to(torch.device("cpu"))
