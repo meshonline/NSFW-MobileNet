@@ -10,7 +10,7 @@ This project resize images with their weight/height ratio not changed, and use m
 2. Copy your own NSFW dataset to the './data/train' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', but they can be any other subdirectories, such as 'nude', 'safe', 'sexy'.
 3. Run 'python3 train.py'.
 ### Dataset
-I had trained the model with this dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
+I had trained the model with this small dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
 ### Pre-Trained Model
 The trained model is 'model_full.pth', you can use it for any purposes.
 ### How To Inference
