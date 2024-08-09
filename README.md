@@ -11,8 +11,8 @@ This project resize images with their weight/height ratio not changed, and use m
 3. Run 'python3 train.py'.
 ### Dataset
 I had trained the model with this dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
-
-The trained model is 'model_full.pth', you can use the model for any purposes, including commercial projects.
+### Pre-Trained Model
+The trained model is 'model_full.pth', you can use it for any purposes.
 ### How To Inference
 Since the input of the mobilenet_v3_small model is 224x224, but the image is usually not square, I suggest that you resize the image first, let the smaller edge of the image match 224, then crop the resized image to three overlapped patches of 224x224, inference the patches separately, if any of the result is NSFW, the final result should be NSFW, like this:
 ```python
