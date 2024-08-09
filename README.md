@@ -1,6 +1,8 @@
 # NSFW-MobileNet
 ### Introduction
 Train your own NSFW model with the 'torchvision.models.mobilenet_v3_small' pre-trained model.
+I found that most other NSFW projects simply resize the images to 256x256, but the original images are usually not square, it is a wrong way to resize non-square images to square images, the resized images should keep their weight/height ratio not changed.
+This project resize images with their weight/height ratio not changed, and use multiple overlapped patches to inference, the result should be better.
 ### How To Train
 1. Create the './checkpoint' subdirectory and the './data/train' subdirectory manually.
 2. Copy your own NSFW dataset to the './data/train' subdirectory, the NSFW dataset should be in several subdirectories, such as 'drawings', 'hentai', 'neutral', 'porn', 'sexy', but they can be any other subdirectories, such as 'nude', 'safe', 'sexy'.
