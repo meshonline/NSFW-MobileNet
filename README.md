@@ -11,6 +11,7 @@ This project resize images with their weight/height ratio not changed, and use m
 3. Run 'python3 train.py'.
 ### Dataset
 I had trained the model with this small dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
+If you want to get more accurate result, you can use [https://github.com/infinitered/nsfwjs](https://github.com/infinitered/nsfwjs) to classify all the images in the above dataset, and re-train the model with the new dataset.
 ### Pre-Trained Model
 The pre-trained model is 'model_full.pth', you can use this model for any purposes, including commercial projects.
 ### How To Inference
