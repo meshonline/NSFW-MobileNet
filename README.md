@@ -11,6 +11,7 @@ This project resizes images with their weight/height ratio not changed, and use 
 3. Run 'python3 train.py'.
 ### Dataset
 I had trained the model with this dataset: [https://huggingface.co/datasets/deepghs/nsfw_detect](https://huggingface.co/datasets/deepghs/nsfw_detect)
+
 Note: The link is gone, please download the dataset from other mirror websites.
 ### Pre-Trained Model
 The pre-trained model is 'model_full.pth', you can use this model for any purposes, including commercial projects.
