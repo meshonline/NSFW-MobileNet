@@ -8,7 +8,7 @@ from torch.autograd import Variable
 from torch.optim.lr_scheduler import ExponentialLR
 from torch.utils.data import DataLoader
 
-from torchvision.models import mobilenet_v3_small
+from torchvision.models import mobilenet_v3_large
 
 import torch.backends.cudnn as cudnn
 cudnn.benchmark = True
@@ -35,8 +35,8 @@ def main(rank, world_size):
 
     ddp_setup(rank, world_size)
 
-    NUM_EPOCHS = 50
-    RESUME = False
+    NUM_EPOCHS = 320
+    RESUME = True
 
     data_dir = './data'
     checkpoint_dir = './checkpoint'
@@ -54,13 +54,13 @@ def main(rank, world_size):
             transforms.ToTensor(),
             normalize,]))
 
-    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=False, sampler=DistributedSampler(train_set), pin_memory=True, drop_last=True)
+    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=32, shuffle=False, sampler=DistributedSampler(train_set), pin_memory=True, drop_last=True)
 
     classes = train_loader.dataset.classes
     if rank == 0:
         print(classes)
 
-    model = mobilenet_v3_small(weights=torchvision.models.MobileNet_V3_Small_Weights.IMAGENET1K_V1)
+    model = mobilenet_v3_large(weights=torchvision.models.MobileNet_V3_Large_Weights.DEFAULT)
     num_ftrs = model.classifier[3].in_features
     model.classifier[3] = nn.Linear(num_ftrs, len(classes))
 
@@ -72,7 +72,7 @@ def main(rank, world_size):
 
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
-    decayRate = 0.915
+    decayRate = 0.98
     scheduler = ExponentialLR(optimizer, gamma=decayRate)
 
     if RESUME:
