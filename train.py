@@ -36,7 +36,7 @@ def main(rank, world_size):
     ddp_setup(rank, world_size)
 
     NUM_EPOCHS = 320
-    RESUME = True
+    RESUME = False
 
     data_dir = './data'
     checkpoint_dir = './checkpoint'
